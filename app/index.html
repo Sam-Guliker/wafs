@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OOP</title>
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/normalize.css">
+  <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+  <!-- <nav>
+    <ul>
+      <li><a href="#trending">Trending</a></li>
+      <li><a href="#random">Random</a></li>
+    </ul>
+  </nav> -->
+
+  <script id="trending-template" type="text/x-handlebars-template">
+    <li class="entry">
+      <h2><a href="#trending/{{id}}">{{title}}</a></h2>
+      <img src="{{image.url}}"/>
+    </li>
+  </script>
+
+  <script id="detail-template" type="text/x-handlebars-template">
+    <article class="entry">
+      <h2>Title: {{title}}</h2>
+      <img src="{{image_big.url}}"/>
+      <p>Source: {{source}}</p>
+    </article>
+  </script>
+
+  <script id="error-template" type="text/x-handlebars-template">
+    <article class="entry">
+      <h1>Oops, somthing went wrong!</h1>
+    </article>
+  </script>
+
+  <!-- <svg width="1200" height="600" xmlns="http://www.w3.org/2000/svg"> -->
+
+    <path d="M400 400"/>
+
+    <!-- Points -->
+    <circle  class="path show" cx="300" cy="400" r="50" fill="transparent" stroke="white" stroke-width="2"/>
+
+  </svg>
+
+</body>
+  <script src="static/js/handlebars.js"></script>
+  <script src="static/js/routie.js"></script>
+  <script type="module" src="static/js/script.js"></script>
+</html>
