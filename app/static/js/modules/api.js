@@ -1,4 +1,5 @@
 import collection from './collection.js'
+import template from './templateRendering.js'
 
 var api = {
 
@@ -10,9 +11,9 @@ var api = {
       })
       .then(function(myJson){
         collection.list = myJson.data
+        template.overviewRender()
       })
     }
-
 }
 
 // exporting

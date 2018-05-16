@@ -9,36 +9,25 @@ var routes = {
 
   init: function() {
     routie({
-      'notFound': function() {
-        template.apiNotFound();
-      },
       'trending': function() {
+        template.pageRender()
         api.init()
       },
       'trending/:id': function(id) {
-        var data = JSON.parse(localStorage.getItem('trendingData'));
-        collection.trending(data)
+        var data = JSON.parse(localStorage.getItem('data'))
 
-        collection.list.trendingImages.forEach(function(data) {
+        data.forEach(function(data) {
           if (data.id == id) {
             template.detailRender(data)
           }
         })
+      },
+      '*': function() {
+        template.apiNotFound();
       }
-
     })
-
-  },
-  loader: {
-    show: function show() {
-      htmlElements.loader.classList.remove('hide')
-      htmlElements.loader.classList.add('show')
-    },
-    hide: function hide() {
-      htmlElements.loader.classList.remove('show')
-      htmlElements.loader.classList.add('hide')
-    }
   }
+
 };
 
 export default routes

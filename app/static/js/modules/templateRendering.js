@@ -1,21 +1,40 @@
 import htmlElements from './createElements.js'
 import collection from './collection.js'
+import loaders from './loaders.js'
 
 var template = {
 
+  pageRender() {
+    setTimeout(function(){
+      htmlElements.body.appendChild(htmlElements.main)
+      htmlElements.main.appendChild(htmlElements.h1)
+      htmlElements.h1.innerHTML = "Trending Gifs"
+      htmlElements.main.append(htmlElements.ul)
+      loaders.hide()
+    }, 1000);
+  },
+
   overviewRender() {
-    console.log(collection.list)
-    var source = document.getElementById("trending-template").innerHTML;
-    var template = Handlebars.compile(source);
+
+    var templateData = collection.list.map(function(item){
+      return {
+        id: item.id,
+        title: item.title,
+        image: item.images.preview_gif,
+        source: item.source_tld,
+        image_big: item.images.original
+      }
+    })
+
+    var data = localStorage.setItem('data', JSON.stringify(templateData))
+
     htmlElements.ul.innerHTML = ''
 
-    htmlElements.body.appendChild(htmlElements.ul)
-    htmlElements.ul.appendChild(htmlElements.h1)
+    var source = document.getElementById("trending-template").innerHTML;
+    var template = Handlebars.compile(source);
 
-    htmlElements.h1.innerHTML = "Trending Gifs"
-
-    data.forEach(function(item, i) {
-      var html = template(data[i])
+    templateData.forEach(function(item, i) {
+      var html = template(templateData[i])
       htmlElements.ul.innerHTML += html
     })
 
@@ -26,9 +45,6 @@ var template = {
     var template = Handlebars.compile(source)
 
     htmlElements.ul.innerHTML = ''
-
-    htmlElements.body.appendChild(htmlElements.ul)
-    htmlElements.h1.innerHTML = "Random Gifs"
 
     var html = template(data)
     htmlElements.ul.innerHTML = html

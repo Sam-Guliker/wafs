@@ -1,17 +1,4 @@
-/*
-
-  Imports
-
-*/
-
-import api from './modules/api.js'
 import routes from './modules/routes.js'
-
-/*
-
-  Javascript Init
-
-*/
 
 (function() {
   // strict mode

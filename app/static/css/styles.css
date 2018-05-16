@@ -1,7 +1,9 @@
 :root{
   --main-bg-color: linear-gradient(-45deg, hsl(234,18%,40%) 0%, hsl(233,25%,22%) 100%);
-  --main-font-family: 'Playfair Display', serif;
+  --main-headline-family: 'Playfair Display', serif;
   --main-font-color:#2e2e2e;
+  --main-font-family: 'Roboto', sans-serif;
+
 }
 body{
   display: flex;
@@ -36,7 +38,13 @@ body{
   margin:auto;
   text-align: center;
 } */
-
+main {
+  transition: all 0.4s ease-in-out;
+  box-sizing: border-box;
+  display: block;
+  background: white;
+  margin: 2em;
+}
 .active{
   display: flex;
 }
@@ -57,6 +65,10 @@ nav{
   margin-right: 3em;
 }
 
+body {
+  min-height: 100vh;
+}
+
 body > ul{
   display:flex;
   padding:2em;
@@ -73,17 +85,19 @@ article *{
   padding:1em 0;
 }
 ul li{
-  text-align: center;
-  min-width:33%;
+  position: relative;
+  top: 0;
+  display: inline-block;
+  width: 49%;
   padding: 2rem;
 }
 ul li:hover{
   transition:0.4s all ease-in-out;
 }
-h1{
+h1,h2{
+  font-family: --main-headline-family;
   width: 100%;
   margin: 1rem;
-  margin-bottom: 0;
   font-size: 3rem;
 }
 li > h2 {
@@ -91,12 +105,25 @@ li > h2 {
   padding-top:0;
 }
 
+img {
+  display: block;
+  width:100%;
+}
+a {
+  display: inline-block;
+  border: 1px solid black;
+  margin-top: 1em;
+  padding: 1em;
+}
 /*
 
   Loader
 
 */
-.path{
+svg {
+  margin: auto;
+}
+.path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: dash 3s cubic-bezier(.67,.19,.38,1.05) infinite;
