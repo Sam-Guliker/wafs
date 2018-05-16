@@ -20,6 +20,7 @@ import routes from './modules/routes.js'
   var app = {
 
     init: function() {
+      window.location.hash = 'trending'
       routes.init()
     }
   }

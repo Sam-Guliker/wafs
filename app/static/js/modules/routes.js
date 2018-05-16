@@ -6,32 +6,15 @@ import htmlElements from './createElements.js'
 //Seting up the routes.
 
 var routes = {
-  
-  apiPromise: function() {
-
-    return api.init()
-      .then(
-        function(data) {
-          localStorage.setItem('trendingData', JSON.stringify(data))
-          window.location.hash = 'trending'
-        })
-      .catch(function(err) {
-        console.log('error', err);
-        routie('notFound')
-      })
-
-  },
 
   init: function() {
-
     routie({
       'notFound': function() {
         template.apiNotFound();
       },
       'trending': function() {
-        var data = JSON.parse(localStorage.getItem('trendingData'));
-        collection.trending(data)
-        template.overviewRender(collection.list.trendingImages)
+        api.init()
+        
       },
       'trending/:id': function(id) {
         var data = JSON.parse(localStorage.getItem('trendingData'));
@@ -45,8 +28,6 @@ var routes = {
       }
 
     })
-
-    this.apiPromise()
 
   },
   loader: {

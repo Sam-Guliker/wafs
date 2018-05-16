@@ -1,10 +1,5 @@
-// importing
-import api from './api.js';
-
 var collection = {
-  list: {
-    trendingImages: [],
-  },
+  list:[],
   trending: function(data) {
     data.data.forEach(item => {
       this.list.trendingImages.push({
