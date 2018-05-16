@@ -14,7 +14,6 @@ var routes = {
       },
       'trending': function() {
         api.init()
-        
       },
       'trending/:id': function(id) {
         var data = JSON.parse(localStorage.getItem('trendingData'));

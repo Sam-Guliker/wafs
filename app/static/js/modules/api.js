@@ -1,4 +1,3 @@
-import routes from './routes.js'
 import collection from './collection.js'
 
 var api = {
