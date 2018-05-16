@@ -29,7 +29,7 @@ var template = {
     htmlElements.ul.innerHTML = ''
 
     htmlElements.body.appendChild(htmlElements.ul)
-    htmlElements.h1.innerHTML = "Trending Gifs"
+    htmlElements.h1.innerHTML = "Random Gifs"
 
     // insert the object into the html
     var html = template(data)

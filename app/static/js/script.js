@@ -21,10 +21,9 @@ import routes from './modules/routes.js'
 
     init: function() {
       routes.init()
-      routes.apiPromise()
     }
   }
-  
+
   app.init()
 
 })()

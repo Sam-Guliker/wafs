@@ -5,17 +5,15 @@ import htmlElements from './createElements.js'
 
 //Seting up the routes.
 
-// Special thanks to Kevin. :>
-
 var routes = {
-
+  
   apiPromise: function() {
 
     return api.init()
       .then(
         function(data) {
           localStorage.setItem('trendingData', JSON.stringify(data))
-          window.location.hash = '#trending'
+          window.location.hash = 'trending'
         })
       .catch(function(err) {
         console.log('error', err);
