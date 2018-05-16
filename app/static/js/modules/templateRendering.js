@@ -14,9 +14,8 @@ var template = {
     }, 1000);
   },
 
-  overviewRender() {
-
-    var templateData = collection.list.map(function(item){
+  trendingRender() {
+    var trendingData = collection.listTrending.map(function(item){
       return {
         id: item.id,
         title: item.title,
@@ -26,41 +25,66 @@ var template = {
       }
     })
 
-    var data = localStorage.setItem('data', JSON.stringify(templateData))
-
+    var data = localStorage.setItem('gifs', JSON.stringify(trendingData))
     htmlElements.ul.innerHTML = ''
 
     var source = document.getElementById("trending-template").innerHTML;
     var template = Handlebars.compile(source);
 
-    templateData.forEach(function(item, i) {
-      var html = template(templateData[i])
+    trendingData.forEach(function(item, i) {
+      var html = template(trendingData[i])
       htmlElements.ul.innerHTML += html
     })
-
   },
 
-  detailRender(data) {
-    var source = document.getElementById("detail-template").innerHTML;
+  stickerRender() {
+    var stickersData = collection.listStickers.map(function(item){
+      return {
+        id: item.id,
+        title: item.title,
+        image: item.images.preview_gif,
+        source: item.source_tld,
+        image_big: item.images.original
+      }
+    })
+
+    var data = localStorage.setItem('stickers', JSON.stringify(stickersData))
+
+    htmlElements.h1.innerHTML = "Trending Stickers"
+    htmlElements.ul.innerHTML = ''
+
+    var source = document.getElementById("stickers-template").innerHTML;
+    var template = Handlebars.compile(source);
+
+    stickersData.forEach(function(item, i) {
+      var html = template(stickersData[i])
+      htmlElements.ul.innerHTML += html
+    })
+  },
+
+  trendingDetail(data) {
+    htmlElements.ul.innerHTML = ''
+    var source = document.getElementById("trending-detail").innerHTML;
     var template = Handlebars.compile(source)
 
+
+    var html = template(data)
+    htmlElements.ul.innerHTML = html
+  },
+
+  stickerDetail(data) {
     htmlElements.ul.innerHTML = ''
+    var source = document.getElementById("stickers-detail").innerHTML;
+    var template = Handlebars.compile(source)
+    console.log(data)
 
     var html = template(data)
     htmlElements.ul.innerHTML = html
   },
 
   apiNotFound() {
-    var source = document.getElementById("error-template").innerHTML;
-    var template = Handlebars.compile(source);
-
-
-    htmlElements.body.appendChild(htmlElements.ul)
+    htmlElements.ul.innerHTML = ''
     htmlElements.h1.innerHTML = "Oops, somthing went wrong."
-
-    // insert the object into the html
-    var html = template()
-    htmlElements.ul.innerHTML = html
   }
 }
 

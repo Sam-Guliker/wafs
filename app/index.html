@@ -24,7 +24,23 @@
     </li>
   </script>
 
-  <script id="detail-template" type="text/x-handlebars-template">
+  <script id="stickers-template" type="text/x-handlebars-template">
+    <article class="entry">
+      <h2>Title: {{title}}</h2>
+      <img src="{{image_big.url}}"/>
+      <a href="#stickers/{{id}}">More information</a>
+    </article>
+  </script>
+
+  <script id="trending-detail" type="text/x-handlebars-template">
+    <li class="entry">
+      <h2>{{title}}</h2>
+      <img src="{{image.url}}"/>
+      <p>Source: {{source}}</p>
+    </li>
+  </script>
+
+  <script id="stickers-detail" type="text/x-handlebars-template">
     <article class="entry">
       <h2>Title: {{title}}</h2>
       <img src="{{image_big.url}}"/>

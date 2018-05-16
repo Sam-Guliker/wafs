@@ -81,7 +81,7 @@ body > ul{
 ul article{
   margin:auto;
 }
-article *{
+article {
   padding:1em 0;
 }
 ul li{
