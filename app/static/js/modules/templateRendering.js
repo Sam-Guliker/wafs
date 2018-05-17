@@ -1,9 +1,6 @@
 import htmlElements from './createElements.js'
 import collection from './collection.js'
-<<<<<<< HEAD
-=======
 import loaders from './loaders.js'
->>>>>>> rework
 
 var template = {
 
@@ -33,10 +30,6 @@ var template = {
 
     var source = document.getElementById("trending-template").innerHTML;
     var template = Handlebars.compile(source);
-<<<<<<< HEAD
-    htmlElements.ul.innerHTML = ''
-=======
->>>>>>> rework
 
     trendingData.forEach(function(item, i) {
       var html = template(trendingData[i])
