@@ -8,16 +8,16 @@ var routes = {
 
   init: function() {
     routie({
-      'trending': function() {
+      'gifs': function() {
         template.pageRender()
-        api.trending()
+        api.gifs()
       },
-      'trending/:id': function(id) {
+      'gifs/:id': function(id) {
         var data = JSON.parse(localStorage.getItem('gifs'))
 
         data.forEach(function(data) {
           if (data.id == id) {
-            template.trendingDetail(data)
+            template.gifsDetail(data)
           }
         })
       },
@@ -30,7 +30,7 @@ var routes = {
 
         data.forEach(function(data) {
           if (data.id == id) {
-            template.stickerDetail(data)
+            template.stickersDetail(data)
           }
         })
       },

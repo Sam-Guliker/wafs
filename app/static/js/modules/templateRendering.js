@@ -14,7 +14,7 @@ var template = {
     }, 1000);
   },
 
-  trendingRender() {
+  gifsRender() {
     var trendingData = collection.listTrending.map(function(item){
       return {
         id: item.id,
@@ -25,19 +25,21 @@ var template = {
       }
     })
 
+    var result = trendingData.filter( item => item.source !== "");
+
     var data = localStorage.setItem('gifs', JSON.stringify(trendingData))
     htmlElements.ul.innerHTML = ''
 
-    var source = document.getElementById("trending-template").innerHTML;
+    var source = document.getElementById("gifs-template").innerHTML;
     var template = Handlebars.compile(source);
 
-    trendingData.forEach(function(item, i) {
-      var html = template(trendingData[i])
+    result.forEach(function(item, i) {
+      var html = template(result[i])
       htmlElements.ul.innerHTML += html
     })
   },
 
-  stickerRender() {
+  stickersRender() {
     var stickersData = collection.listStickers.map(function(item){
       return {
         id: item.id,
@@ -48,23 +50,26 @@ var template = {
       }
     })
 
+    var result = stickersData.filter( item => item.source !== "");
     var data = localStorage.setItem('stickers', JSON.stringify(stickersData))
 
-    htmlElements.h1.innerHTML = "Trending Stickers"
     htmlElements.ul.innerHTML = ''
 
     var source = document.getElementById("stickers-template").innerHTML;
     var template = Handlebars.compile(source);
 
-    stickersData.forEach(function(item, i) {
-      var html = template(stickersData[i])
+    htmlElements.h1.innerHTML = ""
+    htmlElements.h1.innerHTML = "Trending Stickers"
+
+    result.forEach(function(item, i) {
+      var html = template(result[i])
       htmlElements.ul.innerHTML += html
     })
   },
 
-  trendingDetail(data) {
+  gifsDetail(data) {
     htmlElements.ul.innerHTML = ''
-    var source = document.getElementById("trending-detail").innerHTML;
+    var source = document.getElementById("gifs-detail").innerHTML;
     var template = Handlebars.compile(source)
 
 
@@ -72,11 +77,10 @@ var template = {
     htmlElements.ul.innerHTML = html
   },
 
-  stickerDetail(data) {
+  stickersDetail(data) {
     htmlElements.ul.innerHTML = ''
     var source = document.getElementById("stickers-detail").innerHTML;
     var template = Handlebars.compile(source)
-    console.log(data)
 
     var html = template(data)
     htmlElements.ul.innerHTML = html

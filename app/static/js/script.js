@@ -5,14 +5,11 @@ import routes from './modules/routes.js'
   'use strict'
 
   var app = {
-
     init: function() {
-
-      window.location.hash = 'trending'
+      window.location.hash = 'gifs'
       routes.init()
     }
   }
-
   app.init()
 
 })()

@@ -11,28 +11,28 @@
 <body>
   <nav>
     <ul>
-      <li><a href="#trending">Gifs</a></li>
+      <li><a href="#gifs">Gifs</a></li>
       <li><a href="#stickers">Stickers</a></li>
     </ul>
   </nav>
 
-  <script id="trending-template" type="text/x-handlebars-template">
+  <script id="gifs-template" type="text/x-handlebars-template">
     <li class="entry">
       <h2>{{title}}</h2>
       <img src="{{image.url}}"/>
-      <a href="#trending/{{id}}">More information</a>
+      <a href="#gifs/{{id}}">More information</a>
     </li>
   </script>
 
   <script id="stickers-template" type="text/x-handlebars-template">
-    <article class="entry">
+    <li class="entry">
       <h2>Title: {{title}}</h2>
       <img src="{{image_big.url}}"/>
       <a href="#stickers/{{id}}">More information</a>
-    </article>
+    </li>
   </script>
 
-  <script id="trending-detail" type="text/x-handlebars-template">
+  <script id="gifs-detail" type="text/x-handlebars-template">
     <li class="entry">
       <h2>{{title}}</h2>
       <img src="{{image.url}}"/>

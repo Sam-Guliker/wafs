@@ -3,19 +3,19 @@ import template from './templateRendering.js'
 
 var api = {
 
-  trending: function() {
-    var url = "https://api.giphy.com/v1/gifs/trending?api_key=Dw0l0xhERgry5Bpd2UhdnvujDOA7iM6B&limit=10"
+  gifs: function() {
+    var url = "https://api.giphy.com/v1/gifs/trending?api_key=Dw0l0xhERgry5Bpd2UhdnvujDOA7iM6B&limit=25"
     fetch(url)
       .then(function(response){
         return response.json()
       })
       .then(function(myJson){
         collection.listTrending = myJson.data
-        template.trendingRender()
+        template.gifsRender()
       })
     },
     stickers: function() {
-      var url = "https://api.giphy.com/v1/stickers/trending?api_key=Dw0l0xhERgry5Bpd2UhdnvujDOA7iM6B&limit=10"
+      var url = "https://api.giphy.com/v1/stickers/trending?api_key=Dw0l0xhERgry5Bpd2UhdnvujDOA7iM6B&limit=25"
       fetch(url)
         .then(function(response){
           return response.json()
@@ -23,7 +23,7 @@ var api = {
         .then(function(myJson){
           console.log(myJson)
           collection.listStickers = myJson.data
-          template.stickerRender()
+          template.stickersRender()
         })
       }
 
