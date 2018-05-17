@@ -4,7 +4,7 @@ import template from './templateRendering.js'
 var api = {
 
   trending: function() {
-    var url = "http://api.giphy.com/v1/gifs/trending?api_key=Dw0l0xhERgry5Bpd2UhdnvujDOA7iM6B&limit=10"
+    var url = "https://api.giphy.com/v1/gifs/trending?api_key=Dw0l0xhERgry5Bpd2UhdnvujDOA7iM6B&limit=10"
     fetch(url)
       .then(function(response){
         return response.json()
@@ -15,7 +15,7 @@ var api = {
       })
     },
     stickers: function() {
-      var url = "http://api.giphy.com/v1/stickers/trending?api_key=Dw0l0xhERgry5Bpd2UhdnvujDOA7iM6B&limit=10"
+      var url = "https://api.giphy.com/v1/stickers/trending?api_key=Dw0l0xhERgry5Bpd2UhdnvujDOA7iM6B&limit=10"
       fetch(url)
         .then(function(response){
           return response.json()
