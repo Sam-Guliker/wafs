@@ -4,7 +4,6 @@ import template from './templateRendering.js'
 import htmlElements from './createElements.js'
 
 //Seting up the routes.
-
 var routes = {
 
   init: function() {
