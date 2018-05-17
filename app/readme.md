@@ -1,6 +1,6 @@
 # Gif App.
 This app is made for  _trending_ gifs.
-[Website](https://senmetsu.github.io/wafs/.)
+[Website](https://sam-guliker.github.io/wafs/app)
 
 ## Description
 This app is made for top 10 trending gifs, it will show the trending gifs at this momemnt of time. 
