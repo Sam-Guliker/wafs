@@ -1,49 +1,97 @@
 import htmlElements from './createElements.js'
 import collection from './collection.js'
+<<<<<<< HEAD
+=======
+import loaders from './loaders.js'
+>>>>>>> rework
 
 var template = {
 
-  overviewRender(data) {
-    var source = document.getElementById("trending-template").innerHTML;
-    var template = Handlebars.compile(source);
-    htmlElements.ul.innerHTML = ''
-
-    htmlElements.body.appendChild(htmlElements.ul)
-    htmlElements.ul.appendChild(htmlElements.h1)
-
-    htmlElements.h1.innerHTML = "Trending Gifs"
-
-    data.forEach(function(item, i) {
-      var html = template(data[i])
-      htmlElements.ul.innerHTML += html
-    })
-
+  pageRender() {
+    setTimeout(function(){
+      htmlElements.body.appendChild(htmlElements.main)
+      htmlElements.main.appendChild(htmlElements.h1)
+      htmlElements.h1.innerHTML = "Trending Gifs"
+      htmlElements.main.append(htmlElements.ul)
+      loaders.hide()
+    }, 1000);
   },
 
-  detailRender(data) {
-    var source = document.getElementById("detail-template").innerHTML;
-    var template = Handlebars.compile(source)
+  trendingRender() {
+    var trendingData = collection.listTrending.map(function(item){
+      return {
+        id: item.id,
+        title: item.title,
+        image: item.images.preview_gif,
+        source: item.source_tld,
+        image_big: item.images.original
+      }
+    })
 
+    var data = localStorage.setItem('gifs', JSON.stringify(trendingData))
     htmlElements.ul.innerHTML = ''
 
-    htmlElements.body.appendChild(htmlElements.ul)
-    htmlElements.h1.innerHTML = "Random Gifs"
+    var source = document.getElementById("trending-template").innerHTML;
+    var template = Handlebars.compile(source);
+<<<<<<< HEAD
+    htmlElements.ul.innerHTML = ''
+=======
+>>>>>>> rework
+
+    trendingData.forEach(function(item, i) {
+      var html = template(trendingData[i])
+      htmlElements.ul.innerHTML += html
+    })
+  },
+
+  stickerRender() {
+    var stickersData = collection.listStickers.map(function(item){
+      return {
+        id: item.id,
+        title: item.title,
+        image: item.images.preview_gif,
+        source: item.source_tld,
+        image_big: item.images.original
+      }
+    })
+
+    var data = localStorage.setItem('stickers', JSON.stringify(stickersData))
+
+    htmlElements.h1.innerHTML = "Trending Stickers"
+    htmlElements.ul.innerHTML = ''
+
+    var source = document.getElementById("stickers-template").innerHTML;
+    var template = Handlebars.compile(source);
+
+    stickersData.forEach(function(item, i) {
+      var html = template(stickersData[i])
+      htmlElements.ul.innerHTML += html
+    })
+  },
+
+  trendingDetail(data) {
+    htmlElements.ul.innerHTML = ''
+    var source = document.getElementById("trending-detail").innerHTML;
+    var template = Handlebars.compile(source)
+
+
+    var html = template(data)
+    htmlElements.ul.innerHTML = html
+  },
+
+  stickerDetail(data) {
+    htmlElements.ul.innerHTML = ''
+    var source = document.getElementById("stickers-detail").innerHTML;
+    var template = Handlebars.compile(source)
+    console.log(data)
 
     var html = template(data)
     htmlElements.ul.innerHTML = html
   },
 
   apiNotFound() {
-    var source = document.getElementById("error-template").innerHTML;
-    var template = Handlebars.compile(source);
-
-
-    htmlElements.body.appendChild(htmlElements.ul)
+    htmlElements.ul.innerHTML = ''
     htmlElements.h1.innerHTML = "Oops, somthing went wrong."
-
-    // insert the object into the html
-    var html = template()
-    htmlElements.ul.innerHTML = html
   }
 }
 
