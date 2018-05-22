@@ -12,7 +12,7 @@ var template = {
       htmlElements.main.append(htmlElements.ul)
       loaders.hide()
     }, 1000);
-  },
+    },
 
   gifsRender() {
     var trendingData = collection.listTrending.map(function(item){
@@ -38,7 +38,7 @@ var template = {
       htmlElements.ul.innerHTML += html
     })
   },
-
+3
   stickersRender() {
     var stickersData = collection.listStickers.map(function(item){
       return {
