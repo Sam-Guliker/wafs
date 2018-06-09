@@ -38,7 +38,6 @@ var template = {
       htmlElements.ul.innerHTML += html
     })
   },
-3
   stickersRender() {
     var stickersData = collection.listStickers.map(function(item){
       return {
